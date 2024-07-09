@@ -1,0 +1,21 @@
+<h2>Add New Todo</h2>
+<form [formGroup]="todoForm" (ngSubmit)="onSubmit()">
+  <label for="description">Description</label>
+  <input id="description" formControlName="description" />
+  <div *ngIf="todoForm.controls['description'].invalid && (todoForm.controls['description'].dirty || todoForm.controls['description'].touched)">
+    Description is required
+  </div>
+
+  <label for="targetDate">Target Date</label>
+  <input id="targetDate" type="date" formControlName="targetDate" />
+  <div *ngIf="todoForm.controls['targetDate'].invalid && (todoForm.controls['targetDate'].dirty || todoForm.controls['targetDate'].touched)">
+    Target Date is required
+  </div>
+
+  <label for="done">Done</label>
+  <input id="done" type="checkbox" formControlName="done" />
+
+  <button type="submit" [disabled]="todoForm.invalid">Add Todo</button>
+</form>
+<a [routerLink]="['/todos']">Back to List</a>
+
